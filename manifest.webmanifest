@@ -1,0 +1,17 @@
+{
+  "name": "Maison Rouge Archive",
+  "short_name": "Maison Rouge",
+  "description": "Prompt and output vault with persona management, art-deco styling, and offline-friendly PWA support.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#050407",
+  "theme_color": "#12080d",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
