@@ -1,4 +1,4 @@
-const CACHE_NAME = 'maison-rouge-archive-v7-persona-index';
+const CACHE_NAME = 'maison-rouge-archive-v8-wider-index';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icons/icon.svg'];
 
 function patchHtml(html) {
@@ -7,7 +7,17 @@ html,body,.wrap,.layout,.side,.main,.list{overflow-x:hidden!important;overscroll
 body{touch-action:pan-y!important;-webkit-text-size-adjust:100%!important;}
 input,textarea,select{font-size:16px!important;line-height:1.55!important;}
 .card,.card:hover,.card.sel,button:hover,.fileBtn:hover{transform:none!important;}
-.list{touch-action:pan-y!important;}
+.list{touch-action:pan-y!important;max-height:620px!important;}
+@media (min-width: 980px){
+  .layout{grid-template-columns:minmax(420px,540px) minmax(0,1fr)!important;}
+  .side{padding:18px!important;}
+  .list{max-height:680px!important;}
+  .card{padding:16px!important;}
+  .card p{font-size:14px!important;line-height:1.65!important;}
+}
+@media (min-width: 1180px){
+  .layout{grid-template-columns:minmax(480px,600px) minmax(0,1fr)!important;}
+}
 .persona-jump{margin-top:12px;padding:12px;border:1px solid rgba(239,210,154,.12);border-radius:18px;background:rgba(255,255,255,.035);display:none;}
 .persona-jump.open{display:block;}
 .persona-jump-title{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Helvetica Neue",Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#efd29a;margin-bottom:8px;}
