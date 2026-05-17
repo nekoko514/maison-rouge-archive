@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Maison Rouge Archive icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#080507"/>
+      <stop offset="0.45" stop-color="#200b15"/>
+      <stop offset="1" stop-color="#45152a"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff3c4"/>
+      <stop offset="0.45" stop-color="#e0b86f"/>
+      <stop offset="1" stop-color="#9c6832"/>
+    </linearGradient>
+    <linearGradient id="rose" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff6f93"/>
+      <stop offset="0.55" stop-color="#c82250"/>
+      <stop offset="1" stop-color="#5e1025"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="92" fill="url(#bg)"/>
+  <path d="M54 96 L96 54 H416 L458 96 V416 L416 458 H96 L54 416 Z" fill="none" stroke="url(#gold)" stroke-width="12"/>
+  <path d="M82 120 L120 82 H392 L430 120 V392 L392 430 H120 L82 392 Z" fill="none" stroke="#f1d99a" stroke-opacity=".32" stroke-width="3"/>
+  <path d="M108 256 H404" stroke="#e8c980" stroke-opacity=".22" stroke-width="3"/>
+  <path d="M256 108 V404" stroke="#e8c980" stroke-opacity=".12" stroke-width="3"/>
+  <g filter="url(#shadow)">
+    <path d="M170 196 C170 134 214 102 256 102 C298 102 342 134 342 196 C342 264 292 304 256 342 C220 304 170 264 170 196 Z" fill="#17080e" stroke="url(#gold)" stroke-width="7"/>
+    <circle cx="256" cy="194" r="88" fill="url(#rose)" opacity=".92"/>
+    <path d="M256 130 C286 158 292 204 256 246 C220 204 226 158 256 130 Z" fill="#fff0bd" opacity=".18"/>
+    <path d="M198 203 C226 155 286 151 314 203 C278 188 233 188 198 203 Z" fill="#3a0b18" opacity=".45"/>
+  </g>
+  <text x="256" y="292" text-anchor="middle" font-family="Didot, Bodoni 72, Georgia, serif" font-size="126" font-weight="700" fill="url(#gold)" letter-spacing="-10">MR</text>
+  <path d="M142 350 H370" stroke="url(#gold)" stroke-width="5" stroke-linecap="round"/>
+  <text x="256" y="386" text-anchor="middle" font-family="Georgia, serif" font-size="31" font-weight="700" fill="#f6dfaa" letter-spacing="4">ARCHIVE</text>
+  <path d="M256 414 l16 22 h-32 Z" fill="url(#gold)" opacity=".85"/>
+</svg>
