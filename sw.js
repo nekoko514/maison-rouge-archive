@@ -1,11 +1,13 @@
-const CACHE_NAME = 'maison-rouge-archive-v8-wider-index';
+const CACHE_NAME = 'maison-rouge-archive-v9-iphone-no-zoom';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icons/icon.svg'];
 
 function patchHtml(html) {
   const style = `<style id="mobile-fixes">
 html,body,.wrap,.layout,.side,.main,.list{overflow-x:hidden!important;overscroll-behavior-x:none!important;}
+html{touch-action:manipulation!important;-webkit-text-size-adjust:100%!important;}
 body{touch-action:pan-y!important;-webkit-text-size-adjust:100%!important;}
-input,textarea,select{font-size:16px!important;line-height:1.55!important;}
+input,textarea,select{font-size:16px!important;line-height:1.55!important;transform:none!important;zoom:1!important;}
+input:focus,textarea:focus,select:focus{font-size:16px!important;transform:none!important;}
 .card,.card:hover,.card.sel,button:hover,.fileBtn:hover{transform:none!important;}
 .list{touch-action:pan-y!important;max-height:620px!important;}
 @media (min-width: 980px){
@@ -30,6 +32,14 @@ input,textarea,select{font-size:16px!important;line-height:1.55!important;}
   const script = `<script id="persona-jump-script">
 (function(){
   function byId(id){return document.getElementById(id)}
+  function installNoZoom(){
+    var meta=document.querySelector('meta[name="viewport"]');
+    if(meta){meta.setAttribute('content','width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover');}
+    document.querySelectorAll('input, textarea, select').forEach(function(el){
+      el.style.fontSize='16px';
+      el.style.lineHeight='1.55';
+    });
+  }
   function installPersonaJump(){
     var stats=document.querySelector('.stats');
     if(!stats || byId('personaJump')) return;
@@ -80,13 +90,16 @@ input,textarea,select{font-size:16px!important;line-height:1.55!important;}
     list.appendChild(all);
   }
   window.addEventListener('load',function(){
-    setTimeout(function(){installPersonaJump();renderPersonaJump();},250);
-    setInterval(renderPersonaJump,3000);
+    installNoZoom();
+    setTimeout(function(){installNoZoom();installPersonaJump();renderPersonaJump();},250);
+    setInterval(function(){installNoZoom();renderPersonaJump();},3000);
   });
 })();
 </script>`;
 
-  let out = html.includes('id="mobile-fixes"') ? html : html.replace('</head>', style + '\n</head>');
+  let out = html;
+  out = out.replace(/<meta name="viewport" content="[^"]*"\s*\/>/, '<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />');
+  out = out.includes('id="mobile-fixes"') ? out : out.replace('</head>', style + '\n</head>');
   out = out.includes('id="persona-jump-script"') ? out : out.replace('</body>', script + '\n</body>');
 
   out = out.replace(
