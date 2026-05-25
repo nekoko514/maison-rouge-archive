@@ -1,4 +1,4 @@
-const CACHE_NAME = 'maison-rouge-archive-v10-reader-small';
+const CACHE_NAME = 'maison-rouge-archive-v11-reader-scroll';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icons/icon.svg'];
 
 function patchHtml(html) {
@@ -8,8 +8,10 @@ html{touch-action:manipulation!important;-webkit-text-size-adjust:100%!important
 body{touch-action:pan-y!important;-webkit-text-size-adjust:100%!important;}
 input,textarea,select{font-size:16px!important;line-height:1.55!important;transform:none!important;zoom:1!important;}
 input:focus,textarea:focus,select:focus{font-size:16px!important;transform:none!important;}
-.readerBody{font-size:14.5px!important;line-height:1.85!important;}
-.readerTitle{font-size:clamp(21px,4.4vw,36px)!important;}
+.reader.open{display:flex!important;overflow:hidden!important;touch-action:none!important;}
+.readerCard{min-height:0!important;max-height:calc(100vh - 20px)!important;overflow:hidden!important;}
+.readerBody{font-size:13px!important;line-height:1.8!important;overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;touch-action:pan-y!important;min-height:0!important;flex:1 1 auto!important;}
+.readerTitle{font-size:clamp(20px,4.1vw,34px)!important;}
 .card,.card:hover,.card.sel,button:hover,.fileBtn:hover{transform:none!important;}
 .list{touch-action:pan-y!important;max-height:620px!important;}
 @media (min-width: 980px){
@@ -18,7 +20,7 @@ input:focus,textarea:focus,select:focus{font-size:16px!important;transform:none!
   .list{max-height:680px!important;}
   .card{padding:16px!important;}
   .card p{font-size:14px!important;line-height:1.65!important;}
-  .readerBody{font-size:15px!important;line-height:1.9!important;}
+  .readerBody{font-size:13.5px!important;line-height:1.85!important;}
 }
 @media (min-width: 1180px){
   .layout{grid-template-columns:minmax(480px,600px) minmax(0,1fr)!important;}
@@ -43,8 +45,11 @@ input:focus,textarea:focus,select:focus{font-size:16px!important;transform:none!
       el.style.lineHeight='1.55';
     });
     document.querySelectorAll('.readerBody').forEach(function(el){
-      el.style.fontSize='14.5px';
-      el.style.lineHeight='1.85';
+      el.style.fontSize='13px';
+      el.style.lineHeight='1.8';
+      el.style.overflowY='auto';
+      el.style.webkitOverflowScrolling='touch';
+      el.style.touchAction='pan-y';
     });
   }
   function installPersonaJump(){
