@@ -1,4 +1,4 @@
-const CACHE_NAME = 'maison-rouge-archive-v11-reader-scroll';
+const CACHE_NAME = 'maison-rouge-archive-v12-reader-compact';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icons/icon.svg'];
 
 function patchHtml(html) {
@@ -9,9 +9,12 @@ body{touch-action:pan-y!important;-webkit-text-size-adjust:100%!important;}
 input,textarea,select{font-size:16px!important;line-height:1.55!important;transform:none!important;zoom:1!important;}
 input:focus,textarea:focus,select:focus{font-size:16px!important;transform:none!important;}
 .reader.open{display:flex!important;overflow:hidden!important;touch-action:none!important;}
-.readerCard{min-height:0!important;max-height:calc(100vh - 20px)!important;overflow:hidden!important;}
-.readerBody{font-size:13px!important;line-height:1.8!important;overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;touch-action:pan-y!important;min-height:0!important;flex:1 1 auto!important;}
-.readerTitle{font-size:clamp(20px,4.1vw,34px)!important;}
+.readerCard{min-height:0!important;max-height:calc(100vh - 16px)!important;overflow:hidden!important;padding:14px!important;border-radius:22px!important;}
+.readerTop{padding-bottom:8px!important;}
+.readerBody{font-size:11.5px!important;line-height:1.62!important;overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;touch-action:pan-y!important;min-height:0!important;flex:1 1 auto!important;padding-top:10px!important;}
+.readerTitle{font-size:clamp(18px,3.8vw,30px)!important;line-height:1.08!important;}
+.readerMeta{font-size:10px!important;margin-top:4px!important;}
+.readerBtns button{font-size:10px!important;padding:6px 8px!important;}
 .card,.card:hover,.card.sel,button:hover,.fileBtn:hover{transform:none!important;}
 .list{touch-action:pan-y!important;max-height:620px!important;}
 @media (min-width: 980px){
@@ -20,7 +23,7 @@ input:focus,textarea:focus,select:focus{font-size:16px!important;transform:none!
   .list{max-height:680px!important;}
   .card{padding:16px!important;}
   .card p{font-size:14px!important;line-height:1.65!important;}
-  .readerBody{font-size:13.5px!important;line-height:1.85!important;}
+  .readerBody{font-size:12px!important;line-height:1.68!important;}
 }
 @media (min-width: 1180px){
   .layout{grid-template-columns:minmax(480px,600px) minmax(0,1fr)!important;}
@@ -45,8 +48,8 @@ input:focus,textarea:focus,select:focus{font-size:16px!important;transform:none!
       el.style.lineHeight='1.55';
     });
     document.querySelectorAll('.readerBody').forEach(function(el){
-      el.style.fontSize='13px';
-      el.style.lineHeight='1.8';
+      el.style.fontSize='11.5px';
+      el.style.lineHeight='1.62';
       el.style.overflowY='auto';
       el.style.webkitOverflowScrolling='touch';
       el.style.touchAction='pan-y';
