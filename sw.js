@@ -1,4 +1,4 @@
-const CACHE_NAME = 'maison-rouge-archive-v12-reader-compact';
+const CACHE_NAME = 'maison-rouge-archive-v13-reader-safe-area';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icons/icon.svg'];
 
 function patchHtml(html) {
@@ -8,8 +8,9 @@ html{touch-action:manipulation!important;-webkit-text-size-adjust:100%!important
 body{touch-action:pan-y!important;-webkit-text-size-adjust:100%!important;}
 input,textarea,select{font-size:16px!important;line-height:1.55!important;transform:none!important;zoom:1!important;}
 input:focus,textarea:focus,select:focus{font-size:16px!important;transform:none!important;}
+.reader{padding-top:calc(12px + env(safe-area-inset-top))!important;padding-right:10px!important;padding-bottom:calc(10px + env(safe-area-inset-bottom))!important;padding-left:10px!important;}
 .reader.open{display:flex!important;overflow:hidden!important;touch-action:none!important;}
-.readerCard{min-height:0!important;max-height:calc(100vh - 16px)!important;overflow:hidden!important;padding:14px!important;border-radius:22px!important;}
+.readerCard{min-height:0!important;max-height:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 22px)!important;overflow:hidden!important;padding:14px!important;border-radius:22px!important;}
 .readerTop{padding-bottom:8px!important;}
 .readerBody{font-size:11.5px!important;line-height:1.62!important;overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;touch-action:pan-y!important;min-height:0!important;flex:1 1 auto!important;padding-top:10px!important;}
 .readerTitle{font-size:clamp(18px,3.8vw,30px)!important;line-height:1.08!important;}
